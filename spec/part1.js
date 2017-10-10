@@ -58,7 +58,7 @@
       });
 
       it('should accept an index argument', function() {
-        expect(_.last([1, 2, 3], 2)).to.eql([2,3]);
+        expect(_.last([1, 2, 3], 2)).to.eql([2, 3]);
       });
 
       it('should return empty array if zero is passed in as the index', function() {
@@ -66,7 +66,7 @@
       });
 
       it('should return all the array\'s elements if the index argument is larger than the length of the array', function() {
-        expect(_.last([1, 2, 3], 5)).to.eql([1 , 2, 3]);
+        expect(_.last([1, 2, 3], 5)).to.eql([1, 2, 3]);
       });
     });
 
@@ -126,7 +126,7 @@
           iterations.push([letter, index]);
         });
 
-        expect(iterations).to.eql([['a',0], ['b',1], ['c',2]]);
+        expect(iterations).to.eql([['a', 0], ['b', 1], ['c', 2]]);
       });
 
       it('should iterate over arrays and provide access to the original collection', function() {
@@ -329,10 +329,10 @@
       });
 
       it('should handle iterators that work with a sorted array', function() {
-        var callback = function(value) { return value * 2; };
+        var iterator = function(value) { return value === 1; };
         var numbers = [1, 2, 2, 3, 4, 4];
 
-        expect(_.uniq(numbers, true, callback)).to.eql([2, 4, 6, 8]);
+        expect(_.uniq(numbers, true, iterator)).to.eql([1, 2]);
       });
 
       it('should produce a brand new array instead of modifying the input array', function() {

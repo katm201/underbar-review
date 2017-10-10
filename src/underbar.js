@@ -38,15 +38,15 @@
   // Like first, but for the last elements. If n is undefined, return just the
   // last element.
   _.last = function(array, n) {
-    if(n === 0){
+    if (n === 0) {
       //should return empty array
       return [];
     }
-    if(n >= array.length){
+    if (n >= array.length) {
       //should return whole array
       return array;
     }
-    return n === undefined ? array[array.length-1] : array.slice(n-1);
+    return n === undefined ? array[array.length - 1] : array.slice(n - 1);
   };
 
   // Call iterator(value, key, collection) for each element of collection.
@@ -56,13 +56,13 @@
   // iterator function over each item in the input collection.
   _.each = function(collection, iterator) {
 
-    if(Array.isArray(collection)){
-      for(var i = 0; i < collection.length; i++){
+    if (Array.isArray(collection)) {
+      for (var i = 0; i < collection.length; i++) {
         iterator(collection[i], i, collection);
       }
 
     } else {
-      for(var key in collection){
+      for (var key in collection) {
         iterator(collection[key], key, collection);
       }
     }
@@ -88,8 +88,8 @@
   // Return all elements of an array that pass a truth test.
   _.filter = function(collection, test) {
     var results = [];
-    _.each(collection, function(element){
-      if(test(element)){
+    _.each(collection, function(element) {
+      if (test(element)) {
         results.push(element);
       }
     });
@@ -100,7 +100,7 @@
   _.reject = function(collection, test) {
     // TIP: see if you can re-use _.filter() here, without simply
     // copying code in and modifying it
-    return _.filter(collection, function(element){
+    return _.filter(collection, function(element) {
       return !test(element);
     });
   };
@@ -111,10 +111,10 @@
     iterator = iterator || _.identity;
     var results = [];
     var iterated = [];
-    _.each(array, function(element){
+    _.each(array, function(element) {
       var newElement = iterator(element);
       console.log(newElement);
-      if(!iterated.includes(newElement)){
+      if (!iterated.includes(newElement)) {
         iterated.push(newElement);
         results.push(element);
       }
