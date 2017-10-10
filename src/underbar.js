@@ -107,21 +107,18 @@
 
   // Produce a duplicate-free version of the array.
   _.uniq = function(array, isSorted, iterator) {
-    //create a results array 
+
     iterator = iterator || _.identity;
     var results = [];
-    //call each on the array, with the second paramater being a function wrapper
+    var iterated = [];
     _.each(array, function(element){
-      //new element = call iterator on the element
       var newElement = iterator(element);
-      //test if the new element is not contained in the results array
-      if(!results.includes(newElement)){
-      
-        //push new element to results array
-        results.push(newElement);
+      console.log(newElement);
+      if(!iterated.includes(newElement)){
+        iterated.push(newElement);
+        results.push(element);
       }
     });
-    //return results array
     return results;
   };
 

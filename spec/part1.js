@@ -329,10 +329,10 @@
       });
 
       it('should handle iterators that work with a sorted array', function() {
-        var iterator = function(value) { return value === 1; };
+        var callback = function(value) { return value * 2; };
         var numbers = [1, 2, 2, 3, 4, 4];
 
-        expect(_.uniq(numbers, iterator)).to.eql([1, 2]);
+        expect(_.uniq(numbers, true, callback)).to.eql([2, 4, 6, 8]);
       });
 
       it('should produce a brand new array instead of modifying the input array', function() {
