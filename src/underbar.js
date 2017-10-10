@@ -179,21 +179,21 @@
   //   }); // should be 5, regardless of the iterator function passed in
   //          No accumulator is given so the first element is used.
   _.reduce = function(collection, iterator, accumulator) {
-    var collectionCopy = collection.slice();
-
+    
     iterator = iterator || _.identity;
 
-    if (accumulator === undefined) {
-      accumulator = collectionCopy.shift();
-    }
+    var hasAccumulator = arguments.length > 2;
 
-    _.each(collectionCopy, function(element) {
-      accumulator = iterator(accumulator, element);
-    }, accumulator);
+    _.each(collection, function(element) {
+      if (hasAccumulator) {
+        accumulator = iterator(accumulator, element);
+      } else {
+        accumulator = element;
+        hasAccumulator = true;
+      }
+    });
 
     return accumulator;
-    // call _.each on the collection
-      // accumulator = iterator(accumulator, item) 
   };
 
   // Determine if the array or object contains a given value (using `===`).
