@@ -359,6 +359,10 @@
   // input array. For a tip on how to make a copy of an array, see:
   // http://mdn.io/Array.prototype.slice
   _.shuffle = function(array) {
+    var mid = Math.floor(array.length / 2);
+    var firstHalf = array.slice(0, mid);
+    var secondHalf = array.slice(mid);
+    return secondHalf.concat(firstHalf);
   };
 
 
