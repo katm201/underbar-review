@@ -377,10 +377,17 @@
   // Calls the method named by functionOrKey on each value in the list.
   // Note: You will need to learn a bit about .apply to complete this.
   _.invoke = function(collection, functionOrKey, args) {
-    var results = [];
-    _.each(collection, function(element) {
-      results.push(functionOrKey.call(element, element));
+    var isFunction = typeof functionOrKey === 'function';
+
+    var results = _.map(collection, function(element) {
+      if (isFunction) {
+        return functionOrKey.call(element, element);
+      } else {
+        var elementPrototype = element.constructor.prototype;
+        return elementPrototype[functionOrKey].call(element, element);
+      }
     });
+
     return results;
   };
 
